@@ -14,6 +14,11 @@ namespace PhotogrammetryWin.Utils
         private double[,] ATAInverseATL = new double[6, 1];
         Tools tools = new Tools();
         public int num = 0;
+        /// <summary>
+        /// 迭代计算后方交会
+        /// </summary>
+        /// <param name="gcps"></param>
+        /// <param name="camera"></param>
         public CalRescetion(List<GCP> gcps, Camera camera)
         {
             this.gcps = gcps;
@@ -47,7 +52,10 @@ namespace PhotogrammetryWin.Utils
                 num += 1;
             }
         }
-
+        /// <summary>
+        /// 单词后方交会计算
+        /// </summary>
+        /// <returns></returns>
         public double[,] calResection()
         {
             MatrixCal matrixCal = new MatrixCal();
@@ -119,22 +127,7 @@ namespace PhotogrammetryWin.Utils
             camera.kappa += ATAInverseATL[5, 0];
             return ATAInverseATL;
         }
-
-        //==============================================================================
-        //public double[,] calR(double phi, double omega, double kappa)
-        //{
-        //    double[,] R = new double[3, 3];
-        //    R[0, 0] = Math.Cos(phi) * Math.Cos(kappa) - Math.Sin(phi) * Math.Sin(omega) * Math.Sin(kappa);//a1
-        //    R[0, 1] = -Math.Cos(phi) * Math.Sin(kappa) - Math.Sin(phi) * Math.Sin(omega) * Math.Cos(kappa);//a2
-        //    R[0, 2] = -Math.Sin(phi) * Math.Cos(omega);//a3
-        //    R[1, 0] = Math.Cos(omega) * Math.Sin(kappa);//b1
-        //    R[1, 1] = Math.Cos(omega) * Math.Cos(kappa);//b2
-        //    R[1, 2] = -Math.Sin(omega);//b3
-        //    R[2, 0] = Math.Sin(phi) * Math.Cos(kappa) + Math.Cos(phi) * Math.Sin(omega) * Math.Sin(kappa);//c1
-        //    R[2, 1] = -Math.Sin(phi) * Math.Sin(kappa) + Math.Cos(phi) * Math.Sin(omega) * Math.Cos(kappa);//c2
-        //    R[2, 2] = Math.Cos(phi) * Math.Cos(omega);//c3
-        //    return R;
-        //}
+        
         public double calXX(double[,] R, GCP gcp, Camera camera)
         {
             return R[0, 0] * (gcp.Xa - camera.Xs) + R[1, 0] * (gcp.Ya - camera.Ys) + R[2, 0] * (gcp.Za - camera.Zs);

@@ -17,7 +17,11 @@ namespace PhotogrammetryWin
         List<HomonymyPoint> homonymyPoints = new List<HomonymyPoint>();
         double Bx = 0;
         Tools tools = new Tools();
-
+        /// <summary>
+        /// 打开后方交会文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 打开后方交会文件ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -56,7 +60,11 @@ namespace PhotogrammetryWin
                 MessageBox.Show("取消导入文件", "取消", MessageBoxButtons.OKCancel);
             }
         }
-
+        /// <summary>
+        /// 打开相对定向文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 打开相对定向文件ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog of = new OpenFileDialog();
@@ -97,7 +105,11 @@ namespace PhotogrammetryWin
                 MessageBox.Show("取消导入文件", "取消", MessageBoxButtons.OKCancel);
             }
         }
-
+        /// <summary>
+        /// 后方交会计算
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 后方交会ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -118,7 +130,11 @@ namespace PhotogrammetryWin
                 MessageBox.Show("计算失败", "失败", MessageBoxButtons.OK);
             }
         }
-
+        /// <summary>
+        /// 相对定向计算
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 相对定向ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -138,22 +154,34 @@ namespace PhotogrammetryWin
             {
                 MessageBox.Show("计算失败", "失败", MessageBoxButtons.OK);
             }
-}
-
+        }
+        /// <summary>
+        /// 保存运算结果
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 保存运算结果ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog sf = new SaveFileDialog();
             sf.Filter = "文本文件(*.txt)|*.txt";
             if (sf.ShowDialog() == DialogResult.OK)
             {
-                try
+                if(textBoxResult.Text == "")
                 {
-                    String filePath = sf.FileName;
-                    File.WriteAllText(filePath, textBoxResult.Text);
+                    MessageBox.Show("没有进行运算", "失败", MessageBoxButtons.OK);
                 }
-                catch {
-                    MessageBox.Show("保存失败", "失败", MessageBoxButtons.OK);
+                else
+                {
+                    try
+                    {
+                        String filePath = sf.FileName;
+                        File.WriteAllText(filePath, textBoxResult.Text);
+                    }
+                    catch {
+                        MessageBox.Show("保存失败", "失败", MessageBoxButtons.OK);
+                    }
                 }
+
             }
             else {
                 MessageBox.Show("取消保存文件", "取消", MessageBoxButtons.OK);

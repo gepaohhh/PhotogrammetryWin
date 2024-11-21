@@ -12,12 +12,18 @@ namespace PhotogrammetryWin.FileStream
         private string filePath;
         public List<GCP> gcpS;
         public Camera camera;
-
+        /// <summary>
+        /// 获取路径即可返回数据解析情况
+        /// </summary>
+        /// <param name="filePath"></param>
         public ReadResectionFile(string filePath)
         {
             this.filePath = filePath;
             readFile();
         }
+        /// <summary>
+        /// 读取文件
+        /// </summary>
         private void readFile()
         {
             gcpS = new List<GCP>();

@@ -19,7 +19,12 @@ namespace PhotogrammetryWin.Utils
         private double Bx;
         Tools tools = new Tools();
         public int num = 0;
-
+        /// <summary>
+        /// 相对定向迭代计算
+        /// </summary>
+        /// <param name="homonymyPoints"></param>
+        /// <param name="camera"></param>
+        /// <param name="Bx"></param>
         public CalRelativeOrientation(List<HomonymyPoint> homonymyPoints, Camera camera, double Bx) {
             this.homonymyPoints = homonymyPoints;
             this.camera = camera;
@@ -52,7 +57,10 @@ namespace PhotogrammetryWin.Utils
                 num += 1;
             }
         }
-
+        /// <summary>
+        /// 单次相对定向计算
+        /// </summary>
+        /// <returns></returns>
         public double[,] calRelativeOrientation() {
             double[,] R = tools.calR(camera.phi, camera.omega, camera.kappa);
             double[,] A = new double[homonymyPoints.Count, 5];

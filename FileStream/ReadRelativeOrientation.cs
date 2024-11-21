@@ -13,11 +13,17 @@ namespace PhotogrammetryWin.FileStream
         public List<HomonymyPoint> homonymyPoints;
         public Camera camera;
         public double Bx;
+        /// <summary>
+        /// 获取路径即可返回数据解析情况
+        /// </summary>
+        /// <param name="filePath"></param>
         public ReadRelativeOrientation(string filePath) {
             this.filePath = filePath;
             readFile();
         }
-
+        /// <summary>
+        /// 读取文件
+        /// </summary>
         public void readFile() {
             homonymyPoints = new List<HomonymyPoint>();
             camera = new Camera();

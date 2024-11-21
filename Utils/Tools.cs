@@ -8,6 +8,13 @@ namespace PhotogrammetryWin.Utils
 {
     internal class Tools
     {
+        /// <summary>
+        /// 旋转矩阵求解
+        /// </summary>
+        /// <param name="phi"></param>
+        /// <param name="omega"></param>
+        /// <param name="kappa"></param>
+        /// <returns></returns>
         public double[,] calR(double phi, double omega, double kappa)
         {
             double[,] R = new double[3, 3];
@@ -23,7 +30,11 @@ namespace PhotogrammetryWin.Utils
             return R;
         }
 
-        //度转度分秒
+        /// <summary>
+        /// 度小数转度分秒
+        /// </summary>
+        /// <param name="deg"></param>
+        /// <returns></returns>
         public string degree2DMS(double deg) {
             deg = deg * 3600;//转为秒
             int angle = (int)deg;

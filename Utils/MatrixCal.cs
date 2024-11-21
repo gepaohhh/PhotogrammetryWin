@@ -8,6 +8,11 @@ namespace PhotogrammetryWin.Utils
 {
     internal class MatrixCal
     {
+        /// <summary>
+        /// 矩阵转置
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public double[,] matrixT(double[,] a)
         {
             int row = a.GetLength(0);
@@ -32,7 +37,12 @@ namespace PhotogrammetryWin.Utils
             }
             return tMatrix;
         }
-
+        /// <summary>
+        /// 矩阵相乘
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public double[,] matrixMulti(double[,] left, double[,] right)
         {
             int row = left.GetLength(0);
@@ -61,7 +71,11 @@ namespace PhotogrammetryWin.Utils
                 return multiMatrix;
             }
         }
-
+        /// <summary>
+        /// 矩阵求逆
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public double[,] matrixInverse(double[,] a)
         {
             int i = 0;
