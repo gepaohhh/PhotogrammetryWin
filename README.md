@@ -1,6 +1,7 @@
 # 摄影测量
 ## 说明
 该程序仅用于学习使用\
+双击打开PhotogrammetryWin.sln运行
 ## 开发环境
 Visual Studio 2022\
 框架 .NET 8.0 
